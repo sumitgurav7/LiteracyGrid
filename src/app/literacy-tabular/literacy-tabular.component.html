@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+            <p>literacy-tabular works!</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ag-grid-angular
+                style="height: 500px;"
+                class="ag-theme-balham"
+                [rowData]="rowData"
+                [columnDefs]="columns"
+                >
+            </ag-grid-angular>
+        </div>
+    </div>
+    <div class="row">
+        <app-literacy-chart ></app-literacy-chart>
+    </div>
+</div>
