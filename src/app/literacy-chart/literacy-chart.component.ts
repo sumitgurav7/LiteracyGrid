@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as d3 from 'd3';
 import { Literacy } from '../literacy/literacy';
+import { LiteracyService } from '../Shared/literacy.service';
 
 @Component({
   selector: 'app-literacy-chart',
@@ -9,19 +10,27 @@ import { Literacy } from '../literacy/literacy';
 })
 export class LiteracyChartComponent implements OnInit {
 
-  constructor() {
+  constructor(public literacyService: LiteracyService) {
     this.rowData = [80, 25, 69];
   }
 
   /*@Input() */public rowData: any[];
   ngOnInit() {
     debugger;
+    this.literacyService.getLiteracyRates().subscribe((res: Literacy[]) => {
+      this.rowData = res;
+      this.populateChart();
+    });
+  }
+
+
+  private populateChart() {
     d3.select('.chart')
       .selectAll('div')
       .data(this.rowData)
       .enter().append('div')
-      .style('width', (perc) => perc + 'px')
-      .attr('class', 'bar') ;
+      .style('width', (data) => data.literacyRatePersons + 'px')
+      .style('height', '25px').style('background-color', 'blue').style('margin', '5px')
+      .text((data) => data.nameOfStatesUts);
   }
-
 }
