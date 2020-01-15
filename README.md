@@ -1,6 +1,7 @@
 # LiteracyGrid
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.6.
+This is just small Poc with AgGrid and D3.JS charts. It is made for learning purpose
 
 ## Development server
 
