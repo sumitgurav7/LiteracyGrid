@@ -25,11 +25,11 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/
         npm run build
-    - name: Test app
-      shell: bash
-      run: |
-        cd $GITHUB_WORKSPACE/
-        npm run test:unit
+    #- name: Test app
+    #  shell: bash
+    #  run: |
+    #    cd $GITHUB_WORKSPACE/
+    #    npm run test:unit
    # - name: Publish app
    #   uses: Azure/cli@v1.0.0
    #   with:
