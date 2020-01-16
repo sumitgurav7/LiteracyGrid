@@ -18,17 +18,17 @@ jobs:
     - name: Install npm packages
       shell: bash
       run: |
-        cd $GITHUB_WORKSPACE/src/WebApp
+        cd $GITHUB_WORKSPACE/
         npm install
     - name: Build app
       shell: bash
       run: |
-        cd $GITHUB_WORKSPACE/src/WebApp
+        cd $GITHUB_WORKSPACE/
         npm run build
     - name: Test app
       shell: bash
       run: |
-        cd $GITHUB_WORKSPACE/src/WebApp
+        cd $GITHUB_WORKSPACE/
         npm run test:unit
    # - name: Publish app
    #   uses: Azure/cli@v1.0.0
