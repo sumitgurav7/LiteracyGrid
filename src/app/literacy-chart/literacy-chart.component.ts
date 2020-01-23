@@ -16,7 +16,6 @@ export class LiteracyChartComponent implements OnInit {
 
   /*@Input() */public rowData: any[];
   ngOnInit() {
-    debugger;
     this.literacyService.getLiteracyRates().subscribe((res: Literacy[]) => {
       this.rowData = res;
       this.populateChart();

@@ -1,6 +1,34 @@
+<style>
+    .rag-red {
+    background-color: lightcoral;
+}
+.rag-green {
+    background-color: lightgreen;
+}
+.rag-amber {
+    background-color: lightsalmon;
+}
+
+.rag-red-outer .rag-element {
+    background-color: lightcoral;
+}
+
+.rag-green-outer .rag-element {
+    background-color: lightgreen;
+}
+
+.rag-amber-outer .rag-element {
+    background-color: lightsalmon;
+}
+</style>
 <div class="container">
     <div class="row">
-            <p>literacy-tabular works!</p>
+            <div class="col-sm-8">
+                <p>literacy-tabular works!</p>
+            </div>
+            <div class="col-sm-4">
+                <button (click)="exportAsExcel()">Export to Excel</button>
+            </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -9,6 +37,7 @@
                 class="ag-theme-balham"
                 [rowData]="rowData"
                 [columnDefs]="columns"
+                (gridReady)="onGridReady($event)"
                 >
             </ag-grid-angular>
         </div>

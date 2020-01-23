@@ -12,6 +12,7 @@ import { Utility } from '../Utility/Utility';
 export class LiteracyTabularComponent implements OnInit {
 
   constructor(public literacyService: LiteracyService) { }
+  private gridAPi;
   public rowData: Literacy[];
   public columns: ColumnDefinition[];
   ngOnInit() {
@@ -19,6 +20,15 @@ export class LiteracyTabularComponent implements OnInit {
       this.rowData = res;
     });
     this.columns = Utility.buildColumnDef();
+  }
+
+  onGridReady(params) {
+    this.gridAPi = params.api;
+  }
+
+  exportAsExcel() {
+    debugger;
+    this.gridAPi.exportDataAsExcel();
   }
 
 }
