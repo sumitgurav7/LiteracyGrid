@@ -13,13 +13,21 @@ export class LiteracyTabularComponent implements OnInit {
 
   constructor(public literacyService: LiteracyService) { }
   private gridAPi;
+  private sidebar;
+  private defaultColDef;
   public rowData: Literacy[];
   public columns: ColumnDefinition[];
   ngOnInit() {
     this.literacyService.getLiteracyRates().subscribe((res: Literacy[]) => {
       this.rowData = res;
     });
+    this.sidebar = 'filters';
     this.columns = Utility.buildColumnDef();
+    this.defaultColDef = {
+      filter: true,
+      sortable: true,
+      enablePivot: true
+    };
   }
 
   onGridReady(params) {
