@@ -3,6 +3,7 @@ import { LiteracyService } from '../Shared/literacy.service';
 import { Literacy } from '../literacy/literacy';
 import { ColumnDefinition } from './columnDef';
 import { Utility } from '../Utility/Utility';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-literacy-tabular',
@@ -35,8 +36,24 @@ export class LiteracyTabularComponent implements OnInit {
   }
 
   exportAsExcel() {
-    debugger;
     this.gridAPi.exportDataAsExcel();
+  }
+
+  exportAsPng() {
+    const element = document.getElementById('agGridLiteracy');
+    html2canvas(element).then((canvas) => {
+        // Convert the canvas to blob
+        canvas.toBlob((blob) => {
+            // To download directly on browser default 'downloads' location
+            const link = document.createElement('a');
+            link.download = 'literacy.png';
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            // To save manually somewhere in file explorer research needed
+            // npm packages are there for save as functionality
+
+        }, 'image/png');
+    });
   }
 
 }

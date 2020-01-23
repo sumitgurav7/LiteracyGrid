@@ -23,16 +23,21 @@
 </style>
 <div class="container">
     <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-4">
                 <p>literacy-tabular works!</p>
+            </div>
+            
+            <div class="col-sm-4">
+                <button (click)="exportAsPng()">Export As PNG</button>
             </div>
             <div class="col-sm-4">
                 <button (click)="exportAsExcel()">Export to Excel</button>
             </div>
     </div>
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" id="agGridLiteracy">
             <ag-grid-angular
+                #literacyGrid
                 style="height: 500px;"
                 class="ag-theme-balham"
                 [rowData]="rowData"
