@@ -18,7 +18,9 @@ export class LiteracyTabularComponent implements OnInit {
   private defaultColDef;
   public rowData: Literacy[];
   public columns: ColumnDefinition[];
+  public externalFilter: boolean;
   ngOnInit() {
+    this.externalFilter = false;
     this.literacyService.getLiteracyRates().subscribe((res: Literacy[]) => {
       this.rowData = res;
     });
@@ -56,4 +58,21 @@ export class LiteracyTabularComponent implements OnInit {
     });
   }
 
+  applyFilter() {
+    isExternalFilter = this.externalFilter;
+
+    this.gridAPi.onFilterChanged();
+  }
+
+  isExternalFilterPresent() {
+    // need to hoist our component object as it is going in AgGrids Context where our scope doesent present
+    // think this as an arrow function
+    return isExternalFilter;
+  }
+  doesExternalFilterPass(node) {
+    return node.data.literacyRatePersons > 75;
+  }
+
 }
+
+let isExternalFilter: boolean;

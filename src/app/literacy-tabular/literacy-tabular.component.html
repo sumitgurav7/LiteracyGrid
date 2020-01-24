@@ -35,6 +35,12 @@
             </div>
     </div>
     <div class="row">
+        <div class="col-sm-4">
+            <input type="checkbox" [(ngModel)]="externalFilter" (change)="applyFilter()"/>Clcik here for states above 75% Literacy rate
+        </div>
+    </div>
+    <div>
+    <div class="row">
         <div class="col-sm-12" id="agGridLiteracy">
             <ag-grid-angular
                 #literacyGrid
@@ -43,6 +49,8 @@
                 [rowData]="rowData"
                 [columnDefs]="columns"
                 [defaultColDef]="defaultColDef"
+                [isExternalFilterPresent]="isExternalFilterPresent"
+                [doesExternalFilterPass]="doesExternalFilterPass"
                 [sideBar]="sidebar"
                 (gridReady)="onGridReady($event)"
                 >
